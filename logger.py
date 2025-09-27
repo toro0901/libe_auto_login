@@ -26,9 +26,10 @@ def log(message, level=logging.INFO):
     colored_message = f"{color}{full_message}{RESET_COLOR}"
     logger.log(level, colored_message)
 
-#テスト出力
-log("デバッグメッセージ", logging.DEBUG)
-log("情報メッセージ")
-log("警告メッセージ", logging.WARNING)
-log("エラーメッセージ", logging.ERROR)
-log("重大なエラーメッセージ", logging.CRITICAL)
+if __name__ == "__main__":
+    #テスト出力
+    log("デバッグメッセージ", logging.DEBUG)
+    log("情報メッセージ")
+    log("警告メッセージ", logging.WARNING)
+    log("エラーメッセージ", logging.ERROR)
+    log("重大なエラーメッセージ", logging.CRITICAL)
