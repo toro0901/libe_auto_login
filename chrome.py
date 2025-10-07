@@ -1,48 +1,53 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-import time
-from logger import log  # logger.py の log 関数をインポート
-import logging
+from selenium.common.exceptions import WebDriverException
+from logger import Logger
 
 class ChromeManager:
-    # Chromeのオプション設定
+    def __init__(self):
+        #logger初期化
+        self.logger = Logger(__name__).get_logger()
+    
     def get_chrome_options(self):
+        """
+        Chromeの起動オプションの設定（今回はウィンドウサイズのみ）
+        """
         options = Options()
         options.add_argument("--window-size=1200,800")
         return options
-
-    # Chromeを起動
+    
     def start_chrome(self):
+        """
+        Chromeを起動してdriverを返す
+        """
         try:
             options = self.get_chrome_options()
-            self.chrome_driver = webdriver.Chrome(options=options)
-            log("Chromeを起動しました", logging.INFO)  # INFOレベル
-            return self.chrome_driver
-        except Exception as e:
-            log(f"Chromeの起動中にエラーが発生しました: {e}", logging.ERROR)  # ERRORレベル
+            self.driver = webdriver.Chrome(options=options)
+            self.logger.info("Chromeが起動しました")
+            return self.driver
+        except WebDriverException as e:
+            self.logger.error(f"Chrome起動中にエラーが発生:{e}")
             raise
 
-    # 指定URLを開く
-    def open_site(self, url):
+    def open_site(self, url:str):
+        """
+        指定したURLをChromeで開く
+        """
         try:
-            if self.chrome_driver is None:
-                raise RuntimeError("Chromeが起動していません。")
-            self.chrome_driver.get(url)
-            log(f"{url} を開きました", logging.INFO)
-        except Exception as e:
-            log(f"サイトを開く際にエラーが発生しました: {e}", logging.ERROR)
+            self.driver.get(url)
+            self.logger.info(f"{url}を開きました")
+        except WebDriverException as e:
+            self.logger.error(f"サイトを開く際にエラー発生:{e}")
             raise
 
-if __name__ == "__main__":
-    chrome_manager = ChromeManager()
 
-    # Chrome起動
-    chrome_driver = chrome_manager.start_chrome()
+#===== 動作確認 =====
+if __name__ ==  "__main__":
+    manager = ChromeManager()
+    url = "https://www.google.com"
 
-    # Googleを開く
-    chrome_manager.open_site("https://www.google.com")
-
-    # Chrome終了
-    time.sleep(2)
-    chrome_driver.quit()
-    log("Chromeを閉じました", logging.INFO)
+    try:
+        driver = manager.start_chrome()
+        manager.open_site(url)
+    except Exception as e:
+        manager.logger.error(f"テスト中にエラー発生:{e}")
