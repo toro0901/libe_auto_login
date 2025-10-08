@@ -113,27 +113,24 @@ if __name__ == "__main__":
     options.add_argument("--window-size=1200,800")
     driver = webdriver.Chrome(options=options)
 
-    # 簡易logger作成
+    # logger作成
     logger = logging.getLogger("GetElementTest")
     logger.setLevel(logging.DEBUG)
     handler = logging.StreamHandler()
     handler.setFormatter(logging.Formatter("%(levelname)s : %(message)s"))
     logger.addHandler(handler)
 
+    # 任意のテストページへアクセス（例：Google）
+    driver.get("https://www.google.com")
+
     # GetElement初期化
-    get_elem = GetElement(driver, logger)
+    getter = GetElement(driver, logger)
 
     try:
-        # テストページにアクセス（Google）
-        driver.get("https://www.google.com")
-
-        # 検索ボックス（name="q"）を取得
-        search_box = get_elem.get_by_name("q")
-        # ログに要素情報ではなくタグ名とname属性だけ表示
-        logger.info(f"検索ボックス取得成功: タグ={search_box.tag_name}, name={search_box.get_attribute('name')}")
-
+        element = getter.get_by_name("q")
+        logger.info(f"取得した要素:{element.tag_name}")
     except Exception as e:
         logger.error(f"テスト中にエラー発生: {e}")
 
-    time.sleep(3)  # Chromeがすぐ閉じないように待機
+    time.sleep(1)  # Chromeがすぐ閉じないように待機
     driver.quit()
