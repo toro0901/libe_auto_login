@@ -105,32 +105,3 @@ class GetElement:
         except NoSuchElementException as e:
             self.logger.error(f"要素取得失敗 (partial link text): {e}")
             raise
-
-# ======= 動作テスト =======
-if __name__ == "__main__":
-    # Chromeブラウザ起動
-    options = Options()
-    options.add_argument("--window-size=1200,800")
-    driver = webdriver.Chrome(options=options)
-
-    # logger作成
-    logger = logging.getLogger("GetElementTest")
-    logger.setLevel(logging.DEBUG)
-    handler = logging.StreamHandler()
-    handler.setFormatter(logging.Formatter("%(levelname)s : %(message)s"))
-    logger.addHandler(handler)
-
-    # 任意のテストページへアクセス（例：Google）
-    driver.get("https://www.google.com")
-
-    # GetElement初期化
-    getter = GetElement(driver, logger)
-
-    try:
-        element = getter.get_by_name("q")
-        logger.info(f"取得した要素:{element.tag_name}")
-    except Exception as e:
-        logger.error(f"テスト中にエラー発生: {e}")
-
-    time.sleep(1)  # Chromeがすぐ閉じないように待機
-    driver.quit()
