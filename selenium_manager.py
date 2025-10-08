@@ -20,88 +20,88 @@ class GetElement:
 
     def get_by_id(self, value: str) -> WebElement:
         """ID属性で要素を取得"""
-        self.logger.debug(f"要素取得開始 (ID): {value}")
+        self.logger.debug(f"要素取得開始 :\n {value}")
         try:
             element = self.chrome.find_element(By.ID, value)
-            self.logger.debug(f"要素取得完了 (ID): {value}")
+            self.logger.debug(f"要素取得完了 :\n {value}")
             return element
         except NoSuchElementException as e:
-            self.logger.error(f"要素取得失敗 (ID): {e}")
+            self.logger.error(f"要素取得失敗 :\n {e}")
             raise
 
     def get_by_name(self, value: str) -> WebElement:
         """name属性で要素を取得"""
-        self.logger.debug(f"要素取得開始 (name): {value}")
+        self.logger.debug(f"要素取得開始 :\n {value}")
         try:
             element = self.chrome.find_element(By.NAME, value)
-            self.logger.debug(f"要素取得完了 (name): {value}")
+            self.logger.debug(f"要素取得完了 :\n {value}")
             return element
         except NoSuchElementException as e:
-            self.logger.error(f"要素取得失敗 (name): {e}")
+            self.logger.error(f"要素取得失敗 :\n {e}")
             raise
 
     def get_by_css(self, value: str) -> WebElement:
         """CSSセレクタで要素を取得"""
-        self.logger.debug(f"要素取得開始 (CSS): {value}")
+        self.logger.debug(f"要素取得開始 :\n {value}")
         try:
             element = self.chrome.find_element(By.CSS_SELECTOR, value)
-            self.logger.debug(f"要素取得完了 (CSS): {value}")
+            self.logger.debug(f"要素取得完了 :\n {value}")
             return element
         except NoSuchElementException as e:
-            self.logger.error(f"要素取得失敗 (CSS): {e}")
+            self.logger.error(f"要素取得失敗 :\n {e}")
             raise
 
     def get_by_xpath(self, value: str) -> WebElement:
         """XPathで要素を取得"""
-        self.logger.debug(f"要素取得開始 (XPath): {value}")
+        self.logger.debug(f"要素取得開始 :\n {value}")
         try:
             element = self.chrome.find_element(By.XPATH, value)
-            self.logger.debug(f"要素取得完了 (XPath): {value}")
+            self.logger.debug(f"要素取得完了 :\n {value}")
             return element
         except NoSuchElementException as e:
-            self.logger.error(f"要素取得失敗 (XPath): {e}")
+            self.logger.error(f"要素取得失敗 :\n {e}")
             raise
 
     def get_by_class_name(self, value: str) -> WebElement:
         """class名で要素を取得"""
-        self.logger.debug(f"要素取得開始 (class name): {value}")
+        self.logger.debug(f"要素取得開始 :\n {value}")
         try:
             element = self.chrome.find_element(By.CLASS_NAME, value)
-            self.logger.debug(f"要素取得完了 (class name): {value}")
+            self.logger.debug(f"要素取得完了 :\n {value}")
             return element
         except NoSuchElementException as e:
-            self.logger.error(f"要素取得失敗 (class name): {e}")
+            self.logger.error(f"要素取得失敗 :\n {e}")
             raise
 
     def get_by_tag_name(self, value: str) -> WebElement:
         """タグ名で要素を取得"""
-        self.logger.debug(f"要素取得開始 (tag name): {value}")
+        self.logger.debug(f"要素取得開始 :\n {value}")
         try:
             element = self.chrome.find_element(By.TAG_NAME, value)
-            self.logger.debug(f"要素取得完了 (tag name): {value}")
+            self.logger.debug(f"要素取得完了 :\n {value}")
             return element
         except NoSuchElementException as e:
-            self.logger.error(f"要素取得失敗 (tag name): {e}")
+            self.logger.error(f"要素取得失敗 :\n {e}")
             raise
 
     def get_by_link_text(self, value: str) -> WebElement:
         """リンクテキストで要素を取得"""
-        self.logger.debug(f"要素取得開始 (link text): {value}")
+        self.logger.debug(f"要素取得開始 :\n {value}")
         try:
             element = self.chrome.find_element(By.LINK_TEXT, value)
-            self.logger.debug(f"要素取得完了 (link text): {value}")
+            self.logger.debug(f"要素取得完了 :\n {value}")
             return element
         except NoSuchElementException as e:
-            self.logger.error(f"要素取得失敗 (link text): {e}")
+            self.logger.error(f"要素取得失敗 :\n {e}")
             raise
 
     def get_by_partial_link_text(self, value: str) -> WebElement:
         """部分リンクテキストで要素を取得"""
-        self.logger.debug(f"要素取得開始 (partial link text): {value}")
+        self.logger.debug(f"要素取得開始 :\n {value}")
         try:
             element = self.chrome.find_element(By.PARTIAL_LINK_TEXT, value)
-            self.logger.debug(f"要素取得完了 (partial link text): {value}")
+            self.logger.debug(f"要素取得完了 :\n {value}")
             return element
         except NoSuchElementException as e:
-            self.logger.error(f"要素取得失敗 (partial link text): {e}")
+            self.logger.error(f"要素取得失敗 :\n {e}")
             raise
