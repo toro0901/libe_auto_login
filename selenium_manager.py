@@ -30,7 +30,7 @@ class GetElement:
             element = self.chrome.find_element(By.ID, value)
             self.logger.debug(f"要素取得完了 :\n {value}")
             return element
-        except NoSuchElementException as e:
+        except Exception as e:
             self.logger.error(f"要素取得失敗 :\n {e}")
             raise
 
@@ -41,7 +41,7 @@ class GetElement:
             element = self.chrome.find_element(By.NAME, value)
             self.logger.debug(f"要素取得完了 :\n {value}")
             return element
-        except NoSuchElementException as e:
+        except Exception as e:
             self.logger.error(f"要素取得失敗 :\n {e}")
             raise
 
@@ -52,7 +52,7 @@ class GetElement:
             element = self.chrome.find_element(By.CSS_SELECTOR, value)
             self.logger.debug(f"要素取得完了 :\n {value}")
             return element
-        except NoSuchElementException as e:
+        except Exception as e:
             self.logger.error(f"要素取得失敗 :\n {e}")
             raise
 
@@ -63,7 +63,7 @@ class GetElement:
             element = self.chrome.find_element(By.XPATH, value)
             self.logger.debug(f"要素取得完了 :\n {value}")
             return element
-        except NoSuchElementException as e:
+        except Exception as e:
             self.logger.error(f"要素取得失敗 :\n {e}")
             raise
 
@@ -74,7 +74,7 @@ class GetElement:
             element = self.chrome.find_element(By.CLASS_NAME, value)
             self.logger.debug(f"要素取得完了 :\n {value}")
             return element
-        except NoSuchElementException as e:
+        except Exception as e:
             self.logger.error(f"要素取得失敗 :\n {e}")
             raise
 
@@ -85,7 +85,7 @@ class GetElement:
             element = self.chrome.find_element(By.TAG_NAME, value)
             self.logger.debug(f"要素取得完了 :\n {value}")
             return element
-        except NoSuchElementException as e:
+        except Exception as e:
             self.logger.error(f"要素取得失敗 :\n {e}")
             raise
 
@@ -96,7 +96,7 @@ class GetElement:
             element = self.chrome.find_element(By.LINK_TEXT, value)
             self.logger.debug(f"要素取得完了 :\n {value}")
             return element
-        except NoSuchElementException as e:
+        except Exception as e:
             self.logger.error(f"要素取得失敗 :\n {e}")
             raise
 
@@ -107,7 +107,7 @@ class GetElement:
             element = self.chrome.find_element(By.PARTIAL_LINK_TEXT, value)
             self.logger.debug(f"要素取得完了 :\n {value}")
             return element
-        except NoSuchElementException as e:
+        except Exception as e:
             self.logger.error(f"要素取得失敗 :\n {e}")
             raise
 
