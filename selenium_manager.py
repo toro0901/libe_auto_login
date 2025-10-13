@@ -173,7 +173,6 @@ class ActionElement:
 
 
 
-
 if __name__ == "__main__":
     """
     動作確認用
@@ -182,11 +181,6 @@ if __name__ == "__main__":
     - ログインボタンをクリック
     - ログを見れば操作が成功したか分かる
     """
-
-    import logging
-    import time
-    from selenium import webdriver
-    from selenium.webdriver.common.by import By
 
     # ロガー設定
     logger = logging.getLogger("SeleniumTest")
