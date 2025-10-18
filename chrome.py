@@ -14,6 +14,7 @@ class ChromeManager:
         """
         options = Options()
         options.add_argument("--window-size=1200,800")
+        options.add_experimental_option("detach", True)
         return options
     
     def start_chrome(self):
@@ -25,18 +26,18 @@ class ChromeManager:
             self.driver = webdriver.Chrome(options=options)
             self.logger.info("Chromeが起動しました")
             return self.driver
-        except WebDriverException as e:
+        except Exception as e:
             self.logger.error(f"Chrome起動中にエラーが発生:{e}")
             raise
 
-    def open_site(self, url:str):
+    def open_site(self, driver, url:str):
         """
         指定したURLをChromeで開く
         """
         try:
-            self.driver.get(url)
+            driver.get(url)
             self.logger.info(f"{url}を開きました")
-        except WebDriverException as e:
+        except Exception as e:
             self.logger.error(f"サイトを開く際にエラー発生:{e}")
             raise
 
