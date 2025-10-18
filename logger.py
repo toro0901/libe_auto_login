@@ -35,7 +35,7 @@ class Logger:
     """
     def __init__(self, name=__name__):
         self.logger = logging.getLogger(name)
-        self.logger.setLevel(logging.DEBUG)  # すべてのレベルのログを出力
+        self.logger.setLevel(logging.INFO)  # すべてのレベルのログを出力
 
         # ハンドラがすでに設定されていない場合のみ追加（重複防止）
         if not self.logger.handlers:
